@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Restaurant demo</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        .text-bg-secondary-light{
+            background-color: #ded7d7;
+        }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="./logo.png" alt="Logo" width="50" height="30" class="d-inline-block align-text-top">
+                Restaurante XXI
+              </a>
+          <div class="d-flex">
+            <button class="btn btn-outline-info mx-2" type="submit" id="crearMesaBtn">Agregar Mesa</button>
+            <button class="btn btn-outline-success mx-2" type="submit">Cerrar Caja</button>
+          </div>
+        </div>
+      </nav>
+      <div class="container">
+        <div class="row row-cols-1 row-cols-md-3 g-4" id="mesasContainer">
+
+
+          <!-- MESA CERRADA -->
+          <div class="col">
+            <div class="card text-bg-secondary-light flex-fill m-3" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="#abrirMesa"  data-toggle="modal" data-target="#abrirMesa">Mesa <span id="numeroDeMesa">${mesaNumero}</span></a></h5>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">Comensales 0</h6>
+                    <p class="card-text">Mesa Cerrada.</p>
+                    <a href="#" class="btn btn-primary disabled" role="button" aria-disabled="true">Pedido</a>
+                    <a href="#" class="btn btn-danger disabled" role="button" aria-disabled="true">Cerrar Mesa</a>
+                </div>
+            </div>
+          </div>
+
+        <!-- FIN MESA CERRADA -->
+
+        <!-- MESA ABIERTA -->
+          <div class="col">
+            <div class="card flex-fill m-3" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="#verPedido"  data-toggle="modal" data-target="#verPedido">Mesa ${mesaNumero}</a></h5>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">Comensales 0</h6>
+                    <p class="card-text">Mesa Cerrada.</p>
+                    <a href="#" class="btn btn-primary" role="button" aria-disabled="true">Pedido</a>
+                    <a href="#" class="btn btn-danger" role="button" aria-disabled="true">Cerrar Mesa</a>
+                </div>
+            </div>
+          </div>
+
+          <!-- FIN MESA ABIERTA -->
+          <div class="col">
+            <div class="card text-bg-secondary-light flex-fill m-3" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Mesa ${mesaNumero}</h5>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">Comensales 0</h6>
+                    <p class="card-text">Mesa Cerrada.</p>
+                    <a href="#" class="btn btn-primary disabled" role="button" aria-disabled="true">Pedido</a>
+                    <a href="#" class="btn btn-danger disabled" role="button" aria-disabled="true">Cerrar Mesa</a>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+<!-- Modal abrirMesa -->
+<div class="modal fade" id="abrirMesa" tabindex="-1" role="dialog" aria-labelledby="abrirMesaLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="abrirMesaLabel">Abriendo Mesa <span id="numeroDeMesa">#</span></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="">
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Cantidad de Comensales</label>
+            <select class="form-control" id="exampleFormControlSelect1">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+
+            </select>
+            
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" id="abrirMesa">Abrir Mesa</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal verPedido -->
+<div class="modal fade bd-example-modal-lg" id="verPedido" tabindex="-1" role="dialog" aria-labelledby="verPedidoLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="verPedidoLabel">Ver Pedido</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary">Abrir Mesa</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script>
+
+// Array de mesas
+const mesas = [
+  { numero: 1, comensales: 0, estado: 'cerrada' },
+  { numero: 2, comensales: 3, estado: 'abierta' },
+  { numero: 3, comensales: 0, estado: 'cerrada' },
+
+];
+
+const mesasContainer = document.getElementById('mesasContainer');
+const agregarMesa = document.getElementById('crearMesaBtn');
+const abrirMesaLink = document.getElementById('abrirMesa');
+const numeroMesa = document.getElementById('numeroDeMesa');
+
+document.getElementById("crearMesaBtn").addEventListener("click", crearMesa);
+document.getElementById("abrirMesa").addEventListener("click", abrirMesa);
+
+// Agregar evento de clic a los botones "Abrir Mesa"
+const abrirMesaBotones = document.getElementById('abrirMesa');
+abrirMesaBotones.forEach((boton) => {
+  boton.addEventListener('click', function () {
+    const mesaNumero = boton.getAttribute('data-mesa-numero');
+    const numeroMesa = document.getElementById('numeroDeMesa');
+    numeroMesa.textContent = mesaNumero;
+    console.log(numeroMesa);
+  });
+});
+
+
+function crearMesa() {
+  const mesaNumero = mesasContainer.children.length + 1;
+  const mesaElement = document.createElement('div');
+  mesaElement.innerHTML = `
+        <div class="col">
+            <div class="card text-bg-secondary-light flex-fill m-3" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title"><a href="#abrirMesa"  data-toggle="modal" data-target="#abrirMesa">Mesa ${mesaNumero}</a></h5>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">Comensales 0</h6>
+                    <p class="card-text">Mesa Cerrada.</p>
+                    <a href="#" class="btn btn-primary disabled" role="button" aria-disabled="true">Pedido</a>
+                    <a href="#" class="btn btn-danger disabled" role="button" aria-disabled="true">Cerrar Mesa</a>
+                </div>
+            </div>
+        </div>
+        `;
+      // Agrega el elemento de mesa al contenedor
+      mesasContainer.appendChild(mesaElement);
+}
+
+
+function mostrarMesas() {
+  // Limpia el contenido actual del contenedor
+  mesasContainer.innerHTML = '';
+
+  // Recorre el array de mesas
+  mesas.forEach((mesa) => {
+    const mesaElement = document.createElement('div');
+    mesaElement.classList.add('mesa');
+    mesaElement.textContent = `Mesa ${mesa.numero}`;
+
+    if (mesa.estado === 'cerrada') {
+      mesaElement.innerHTML = `
+        <div class="col">
+            <div class="card text-bg-secondary-light flex-fill m-3" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title"><a href="#abrirMesa"  data-toggle="modal" data-target="#abrirMesa">Mesa <span id="numeroDeMesa">${mesa.numero}</span></a></h5>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">Comensales ${mesa.comensales}</h6>  
+                    <p class="card-text">Mesa Cerrada.</p>
+                    <button type="button" class="btn btn-info abrir-mesa" data-toggle="modal" data-target="#abrirMesa" id="submitMesaId" data-mesa-numero="${mesa.numero}">Abrir Mesa</button>
+                    <a href="#" class="btn btn-primary disabled" role="button" aria-disabled="true">Pedido</a>
+                    <a href="#" class="btn btn-danger disabled" role="button" aria-disabled="true">Cerrar Mesa</a>
+                </div>
+            </div>
+        </div>
+        `;
+    } else {
+      mesaElement.innerHTML = `
+        <div class="col">
+            <div class="card flex-fill m-3" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Mesa ${mesa.numero}</h5>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">Comensales ${mesa.comensales}</h6>
+                    <p class="card-text">Mesa Cerrada.</p>
+                    <a href="#" class="btn btn-primary" role="button" aria-disabled="true">Pedido</a>
+                    <a href="#" class="btn btn-danger" role="button" aria-disabled="true">Cerrar Mesa</a>
+                </div>
+            </div>
+        </div>
+        `;
+    }
+
+    // Agrega el elemento de mesa al contenedor
+    mesasContainer.appendChild(mesaElement);
+  });
+}
+
+
+function abrirMesa() {
+  console.log(`Abriendo mesa ${numeroMesa.value}`);
+}
+mostrarMesas();
+
+
+</script>
+  </body>
+</html>
